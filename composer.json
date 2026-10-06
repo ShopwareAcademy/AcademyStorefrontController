@@ -4,11 +4,14 @@
     "type": "shopware-platform-plugin",
     "version": "1.0.0",
     "license": "MIT",
+    "require": {
+        "shopware/core": "~6.7.14"
+    },
     "extra": {
         "shopware-plugin-class": "ShopwareAcademy\\StorefrontController\\AcademyStorefrontController",
         "label": {
             "de-DE": "Plugin mit eigenem Storefront Controller",
-            "en-GB": "Plugin with custom storefront controller"
+            "en-GB": "Plugin With Custom Storefront Controller"
         }
     },
     "autoload": {

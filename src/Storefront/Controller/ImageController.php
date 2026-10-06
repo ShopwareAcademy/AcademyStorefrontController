@@ -10,19 +10,24 @@ use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Shopware\Core\PlatformRequest;
 use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Shopware\Storefront\Controller\StorefrontController;
+use Shopware\Storefront\Framework\Routing\StorefrontRouteScope;
 
-#[Route(defaults: ['_routeScope' => ['storefront'], 'XmlHttpRequest' => true])]
+#[Route(
+    defaults: [
+        PlatformRequest::ATTRIBUTE_ROUTE_SCOPE => [StorefrontRouteScope::ID],
+        'XmlHttpRequest' => true
+    ]
+)]
 class ImageController extends StorefrontController
 {
     public function __construct(
         private readonly HttpClientInterface $client,
         private readonly SystemConfigService $systemConfigService
-    )
-    {
-    }
+    ) { }
 
     /**
      * @throws TransportExceptionInterface
@@ -38,19 +43,14 @@ class ImageController extends StorefrontController
     )]
     public function showImage(SalesChannelContext $context): Response
     {
-        $pluginConfig = $this->systemConfigService->get('AcademyStorefrontController.config', $context->getSalesChannelId());
-        $apiAccessKey = $pluginConfig['apiAccessKey'];
-        $apiProvider = $pluginConfig['apiProvider'];
+        $apiAccessKey = $this->systemConfigService->get('AcademyStorefrontController.config.apiAccessKey', $context->getSalesChannelId());
+        $apiProvider = $this->systemConfigService->get('AcademyStorefrontController.config.apiProvider', $context->getSalesChannelId());
 
-        $response = $this->client->request(
-            'GET',
-            'https://api.' . $apiProvider . '.com/v1/images/search',
-            [
-                'headers' => [
-                    'x-api-key' => $apiAccessKey
-                ]
+        $response = $this->client->request('GET', 'https://api.'.$apiProvider.'.com/v1/images/search', [
+            'headers' => [
+                'x-api-key' => $apiAccessKey
             ]
-        );
+        ]);
 
         $data = $response->toArray();
         $imageUrl = $data[0]['url'];

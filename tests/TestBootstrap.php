@@ -9,4 +9,4 @@ $loader = (new TestBootstrapper())
     ->bootstrap()
     ->getClassLoader();
 
-$loader->addPsr4('AcademyStorefrontController\\StorefrontController\\Tests\\', __DIR__);
+$loader->addPsr4('ShopwareAcademy\\StorefrontController\\Tests\\', __DIR__);

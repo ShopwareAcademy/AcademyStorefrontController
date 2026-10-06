@@ -1,9 +1,12 @@
 {% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget.html.twig' %}
 
-
 {% block buy_widget_ordernumber_container %}
     {{ parent() }}
-    <a href="{{ path('frontend.image.show') }}" class="open-image-modal" data-ajax-modal="true"
-       data-url="{{ path('frontend.image.show') }}">View Image</a>
+
+    <a href="{{ path('frontend.image.show') }}"
+       class="open-image-modal"
+       data-ajax-modal="true"
+       data-url="{{ path('frontend.image.show') }}"
+    >View Image</a>
 {% endblock %}
 

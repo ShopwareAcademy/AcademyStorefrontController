@@ -14,4 +14,4 @@ jobs:
       extensionName: ${{ github.event.repository.name }}
       e2ePath: tests/acceptance
       e2eTestFramework: playwright
-      shopwareVersion: trunk
+      shopwareVersion: 6.7.15.0
