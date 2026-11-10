@@ -9,11 +9,11 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@playwright/test": "^1.48.2",
-    "@types/node": "^22.9.0"
+    "@playwright/test": "^1.65.0",
+    "@types/node": "^24.19.2"
   },
   "dependencies": {
-    "@shopware-ag/acceptance-test-suite": "^4.0.0",
-    "dotenv": "^16.4.5"
+    "@shopware-ag/acceptance-test-suite": "^12.26.0",
+    "dotenv": "^18.0.10"
   }
 }
