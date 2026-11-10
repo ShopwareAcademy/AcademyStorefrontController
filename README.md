@@ -6,14 +6,16 @@ The plugin implementation on `main` remains the reference state for that learnin
 
 ---
 
-For the Playwright learning unit in the Frontend Development Essentials learning path, two dedicated Git tags provide separate start and end states:
+For the local Playwright learning unit in the Frontend Development Essentials learning path, two dedicated Git tags provide separate start and end states:
 
 - `LU-02-playwright-end-to-end-test--start`: Start with the working Storefront plugin and a minimal Playwright test project.
-- `LU-02-playwright-end-to-end-test--end`: Compare your result with the completed Playwright test and CI setup.
+- `LU-02-playwright-end-to-end-test--end`: Compare your result with the completed local Playwright test.
 
-## Start the Playwright Learning Unit
+## Use the Playwright Reference States
 
-Clone the dedicated start state from your Shopware project root:
+### Start the Learning Unit
+
+Clone the prepared start state from your Shopware project root:
 
 ```bash
 git clone --branch LU-02-playwright-end-to-end-test--start \
@@ -28,7 +30,29 @@ This start state contains:
 - An environment template for connecting the test project to a local Shopware installation.
 - Minimal starter files for the Playwright configuration, fixtures, and product page test.
 
-The completed test and GitHub Actions workflow are intentionally not included. You create them while following the learning unit.
+The completed test is intentionally not included. You create it while following the learning unit.
+
+### Check the Completed Local Test
+
+To compare your result in a separate directory, clone the completed state:
+
+```bash
+git clone --branch LU-02-playwright-end-to-end-test--end \
+  https://github.com/ShopwareAcademy/AcademyStorefrontController.git \
+  AcademyStorefrontController-LU02-Reference
+```
+
+The completed state demonstrates how to:
+
+- Load local Shopware connection values from `.env`.
+- Configure Chromium and Firefox as Playwright projects.
+- Connect Playwright to the Shopware Acceptance Test Suite fixtures.
+- Create isolated product test data with `TestDataService`.
+- Open the generated product page through `DefaultSalesChannel`.
+- Verify that the **View Image** link is visible.
+- Record screenshots and an HTML report for failed tests.
+
+The GitHub Actions workflow is intentionally not part of this state. The following learning unit adds CI to the same local test.
 
 ## Features
 
