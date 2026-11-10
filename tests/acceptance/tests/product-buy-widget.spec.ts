@@ -9,8 +9,7 @@ test('displays the image modal link on a product detail page', async ({
 
     await page.goto(`${DefaultSalesChannel.url}/detail/${basicProduct.id}`);
 
-    //const openImageModalLink = page.locator('a.open-image-modal');
-    const openImageModalLink = page.locator('a.open-image-modal-missing');
+    const openImageModalLink = page.locator('a.open-image-modal');
 
     await expect(openImageModalLink).toBeVisible();
 });
