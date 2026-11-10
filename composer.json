@@ -1,9 +1,15 @@
 {
     "name": "shopware-academy/storefront-controller",
-    "description": "Storefront plugin with custom functionality",
+    "description": "Storefront Plugin With Custom Functionality",
     "type": "shopware-platform-plugin",
     "version": "1.0.0",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Shopware Academy",
+            "email": "academy@shopware.com"
+        }
+    ],
     "require": {
         "shopware/core": "~6.7.14"
     },

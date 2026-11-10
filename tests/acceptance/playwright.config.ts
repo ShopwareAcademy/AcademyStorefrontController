@@ -1,54 +1,5 @@
-import { defineConfig, devices } from '@playwright/test';
-// @ts-ignore
-import dotenv from 'dotenv';
+import { defineConfig } from '@playwright/test';
 
-dotenv.config();
-
-process.env['SHOPWARE_ADMIN_USERNAME'] = process.env['SHOPWARE_ADMIN_USERNAME'] || 'admin';
-process.env['SHOPWARE_ADMIN_PASSWORD'] = process.env['SHOPWARE_ADMIN_PASSWORD'] || 'shopware';
-process.env['MAILPIT_BASE_URL'] = process.env['MAILPIT_BASE_URL'] || 'http://localhost:8025';
-process.env['APP_URL'] = process.env['APP_URL'] ?? 'http://localhost:8000';
-
-// make sure APP_URL ends with a slash
-process.env['APP_URL'] = process.env['APP_URL'].replace(/\/+$/, '') + '/';
-if (process.env['ADMIN_URL']) {
-  process.env['ADMIN_URL'] = process.env['ADMIN_URL'].replace(/\/+$/, '') + '/';
-} else {
-  process.env['ADMIN_URL'] = process.env['APP_URL'] + 'admin/';
-}
-
-
-
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
 export default defineConfig({
-
   testDir: './tests',
-  /* Run tests in files in parallel */
-  fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
-  use: {
-    screenshot: 'only-on-failure',
-    baseURL: process.env.APP_URL,
-    trace: 'on-first-retry',
-  },
-
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-  ],
-
-
 });
