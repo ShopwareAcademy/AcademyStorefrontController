@@ -16,7 +16,6 @@ jobs:
       shopwareVersion: v6.7.16.0
 
   trunk:
-    if: github.event_name == 'workflow_dispatch'
     uses: shopware/github-actions/.github/workflows/e2e.yml@main
     with:
       extensionName: ${{ github.event.repository.name }}
