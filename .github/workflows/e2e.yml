@@ -5,6 +5,11 @@ on:
     branches:
       - main
   workflow_dispatch:
+  # Scheduled workflows only run from the default branch. This Academy
+  # workflow is stored in a reference tag, so the trigger remains disabled.
+  # Enable it in a project workflow on the default branch:
+  # schedule:
+  #   - cron: '0 3 * * *'
 
 jobs:
   stable:
@@ -15,10 +20,10 @@ jobs:
       e2eTestFramework: playwright
       shopwareVersion: v6.7.16.0
 
-  trunk:
-    uses: shopware/github-actions/.github/workflows/e2e.yml@main
-    with:
-      extensionName: ${{ github.event.repository.name }}
-      e2ePath: tests/acceptance
-      e2eTestFramework: playwright
-      shopwareVersion: trunk
+#  trunk:
+#    uses: shopware/github-actions/.github/workflows/e2e.yml@main
+#    with:
+#      extensionName: ${{ github.event.repository.name }}
+#      e2ePath: tests/acceptance
+#      e2eTestFramework: playwright
+#      shopwareVersion: trunk
